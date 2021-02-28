@@ -4,9 +4,9 @@ import { UsersRepository } from "../repositories/UsersRepository";
 
 class UserController {
 
-    async create(request: Request, response: Response){
+    async create(request: Request, response: Response) {
         const { name, email } = request.body;
-        
+
         const usersRepository = getCustomRepository(UsersRepository);
 
 
@@ -15,7 +15,7 @@ class UserController {
             email
         });
 
-        if(userAlreadyExists){
+        if (userAlreadyExists) {
             return response.status(400).json({
                 error: "User with informed e-mail already exists!"
             })
@@ -24,12 +24,12 @@ class UserController {
         const user = usersRepository.create({
             name, email
         })
-        
+
 
         await usersRepository.save(user);
 
 
-        return response.json(user);
+        return response.status(201).json(user);
 
     }
 
