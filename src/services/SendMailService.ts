@@ -39,7 +39,7 @@ class SendMailService {
             from: "NPS <noreply@nps.com.br>"
         });
 
-        console.log('Message sent: %s', message.messageID);
+        console.log('Message sent: %s', message.messageId);
         //Preview só funciona para email enviado das contas do Ethereal.
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
 
